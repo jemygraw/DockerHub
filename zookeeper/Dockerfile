@@ -17,6 +17,7 @@ ADD zookeeper-entry-point.sh /root/
 ADD zoo.cfg /root/zookeeper/conf
 
 RUN mkdir -p /root/zookeeper/data/
+RUN chmod +x /root/zookeeper/bin/zkServer.sh
 RUN chmod +x /root/zookeeper-entry-point.sh
 
 # ports
