@@ -14,6 +14,9 @@ ADD zoo.cfg /root/zookeeper/conf
 RUN mkdir -p /root/zookeeper/data/
 RUN chmod +x /root/zookeeper-entry-point.sh
 
+# ports
+EXPOSE 2181 2888 3888
+
 # entry point
 WORKDIR /root/
 CMD ./zookeeper-entry-point.sh
