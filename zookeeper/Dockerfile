@@ -4,6 +4,15 @@ FROM reg.qiniu.com/library/ubuntu:16.04
 RUN apt-get -y update
 RUN apt-get -y install telnet iputils-ping
 
+#set time to UTC+8
+ENV TZ 'Asia/Shanghai'
+RUN echo $TZ > /etc/timezone
+RUN apt-get install -y tzdata
+RUN rm /etc/localtime
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
+RUN dpkg-reconfigure -f noninteractive tzdata
+RUN apt-get clean
+
 # set java environment
 ADD jdk-8u121-linux-x64.tar.gz /usr/local/
 ENV JAVA_HOME /usr/local/jdk1.8.0_121/
